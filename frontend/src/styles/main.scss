@@ -1,0 +1,27 @@
+@use 'sidebar';
+@use 'rightPanel';
+@use 'editorPanel';
+@use 'resultPanel';
+@use 'questionPanel';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f8fafc;
+  font-family:  sans-serif;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;   
+
+  @media (min-width: 641px) {
+    flex-direction: row;   
+    height: 100vh;
+    overflow: hidden;
+  }
+}

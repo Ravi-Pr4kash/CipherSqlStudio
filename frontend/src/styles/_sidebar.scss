@@ -1,0 +1,94 @@
+$sidebarBg:          #f8fafc;
+$sidebarBorder:      #e2e8f0;
+$sidebarWidth-md:    260px;
+$sidebarWidth-lg:    280px;
+
+$textPrimary:        #1e293b;
+$textMuted:          #0f172a;
+
+$accent:              #6366f1;
+$accent-soft:         rgba(99, 102, 241, 0.08);
+
+$itemHoverBg:       #f1f5f9;
+$itemActiveBg:      $accent-soft;
+$itemActiveBorder:  $accent;
+
+$radius:              6px;
+$transition:          all 0.2s ease;
+
+.sidebar {
+  width: 100%;
+  background-color: $sidebarBg;
+  border-bottom: 1px solid $sidebarBorder; 
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;      
+
+ 
+
+  @media (min-width: 641px) {
+    width: $sidebarWidth-md;
+    min-height: 100vh;  
+    border-bottom: none;
+    border-right: 1px solid $sidebarBorder;
+    padding: 24px 16px;
+  }
+
+  @media (min-width: 1024px) {
+    width: $sidebarWidth-lg;
+  }
+}
+
+.sidebarHeading {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1rem;
+  font-weight: 700;
+  color: $textMuted;
+  padding-bottom: 14px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid $sidebarBorder;
+}
+
+.sidebarItem {
+  cursor: pointer;
+  padding: 10px 12px;
+  border-radius: $radius;
+  font-size: 0.875rem;
+  color: $textMuted;
+  border-left: 2px solid transparent;
+  transition: $transition;
+  line-height: 1.4;
+
+  &:hover {
+    background: $itemHoverBg;
+    color: $textPrimary;
+    border-left-color: $sidebarBorder;
+    padding-left: 16px;
+  }
+
+  &--active {
+    background: $itemActiveBg;
+    color: $accent;
+    font-weight: 600;
+    border-left-color: $accent;
+    padding-left: 16px;
+  }
+}
+
+.sidebarLevel {
+  float: right;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  transition: $transition;
+
+  &--easy   { background: rgba(34, 197, 94, 0.12); color: #16a34a; }
+  &--medium { background: rgba(234, 179, 8,  0.12); color: #ca8a04; }
+  &--hard   { background: rgba(239, 68, 68,  0.12); color: #dc2626; }
+}

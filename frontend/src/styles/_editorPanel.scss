@@ -1,0 +1,53 @@
+$panelBg:           ghostwhite;
+$panelBorder:      grey;
+$textHeading:      black;
+$buttonBg:            blue;
+$buttonHover:         #4f46e5;
+$buttonText:          white;
+$transition:        all 0.2s ease;
+
+.editorPanel {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;    
+  overflow: hidden;
+  background-color: $panelBg;
+  border-bottom: 1px solid $panelBorder;
+
+  h2 {
+    flex-shrink: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $textHeading;
+    padding: 1rem 1.5rem 0.75rem;
+    border-bottom: 1px solid $panelBorder;
+  }
+
+  & > div {
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  button {
+    flex-shrink: 0;
+    width: 100%;
+    padding: 12px;
+    background-color: $buttonBg;
+    color: $buttonText;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border: none;
+    cursor: pointer;
+    transition: $transition;
+
+    
+  }
+
+  @media (min-width: 1024px) {
+    min-height: 0;        
+    border-bottom: none;
+  }
+}

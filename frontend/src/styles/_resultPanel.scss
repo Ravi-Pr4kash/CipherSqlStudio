@@ -1,0 +1,122 @@
+$panelBg:          #f8fafc;
+$panelBorder:      #e2e8f0;
+
+$textPrimary:      #1e293b;
+$textMuted:        #0f172a;
+$textHeading:      #0f172a;
+
+$tableHeaderBg:   #f1f5f9;
+$tableRowHover:   #f8fafc;
+$tableBorder:      #e2e8f0;
+
+$successBg:        rgba(34, 197, 94, 0.08);
+$successBorder:    rgba(34, 197, 94, 0.3);
+$successText:      #16a34a;
+
+$errorBg:          rgba(239, 68, 68, 0.08);
+$errorBorder:      rgba(239, 68, 68, 0.3);
+$errorText:        #dc2626;
+
+$wrongBg:          rgba(234, 179, 8, 0.08);
+$wrongBorder:      rgba(234, 179, 8, 0.3);
+$wrongText:        #ca8a04;
+
+$radius:            8px;
+$transition:        all 0.2s ease;
+
+.resultPanel {
+  flex: 1;
+  overflow-y: auto;
+  background-color: $panelBg;
+  border-top: 1px solid $panelBorder;
+  padding: 1.5rem;
+
+  h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $textMuted;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid $panelBorder;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    margin-bottom: 1.25rem;
+    border-radius: $radius;
+    overflow: hidden;
+    border: 1px solid $tableBorder;
+
+    thead {
+      background-color: $tableHeaderBg;
+
+      th {
+        padding: 10px 14px;
+        text-align: left;
+        font-weight: 600;
+        color: $textPrimary;
+        border-bottom: 1px solid $tableBorder;
+        white-space: nowrap;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: $transition;
+        border-bottom: 1px solid $tableBorder;
+
+        &:last-child { border-bottom: none; }
+        &:hover { background-color: $tableRowHover; }
+      }
+
+      td {
+        padding: 9px 14px;
+        color: $textMuted;
+      }
+    }
+  }
+
+
+
+  
+  .correctResult,
+  .wrongResult,
+  .errorResult {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: $radius;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 0.75rem;
+
+    &::before {
+      font-size: 1rem;
+    }
+  }
+
+  .correctResult {
+    background-color: $successBg;
+    border: 1px solid $successBorder;
+    color: $successText;
+
+    
+  }
+
+  .wrongResult {
+    background-color: $wrongBg;
+    border: 1px solid $wrongBorder;
+    color: $wrongText;
+  }
+
+  .errorResult {
+    background-color: $errorBg;
+    border: 1px solid $errorBorder;
+    color: $errorText;
+  }
+}

@@ -1,34 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react"
+import { fetchAssignments, executeQuery } from "./services/assignment.js"
+import Sidebar from './componenets/LeftPanel/Sidebar.jsx'
+import Question from './componenets/RightPanel/Question.jsx'
+import SqlEditor from './componenets/RightPanel/SqlEditor.jsx'
+import Result from './componenets/RightPanel/Result.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [assignments, setAssignments] = useState([])
+  const [selectedAssignment, setSelectedAssignment] = useState(null)
+  const [query, setQuery] = useState("start your query here")
+  const [results, setResults] = useState(null)
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const loadAssignments = async () => {
+      try {
+        const data = await fetchAssignments()
+        setAssignments(data)
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    loadAssignments()
+  }, [])
+
+  const handleRun = async () => {
+    if (!selectedAssignment) return
+    try {
+      setLoading(true)
+      setError(null)
+      const data = await executeQuery(
+  query,
+  selectedAssignment.sampleTables,
+  selectedAssignment.expectedOutput
+)
+      setResults(data)
+    } catch (err) {
+      setError(err.response?.data?.error || "Query failed")
+      setResults(null)
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+     <div className="app">
+    <Sidebar
+      assignments={assignments}
+      selectedAssignment={selectedAssignment}
+      onSelect={setSelectedAssignment}
+    />
+    <main className="rightPanel">
+      <div className="rightPanelTop">
+        <Question selectedAssignment={selectedAssignment} />
+        <SqlEditor query={query} setQuery={setQuery} onRun={handleRun} loading={loading} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="resultWrapper">
+        <Result results={results} error={error} />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </main>
+  </div>
   )
 }
 

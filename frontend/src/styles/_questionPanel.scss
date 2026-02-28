@@ -1,0 +1,98 @@
+$panelBg:          ghostwhite;
+$panelBorder:     grey;
+
+$textPrimary:      #1e293b;
+$textMuted:        #64748b;
+$textHeading:      #0f172a;
+
+$tableHeaderBg:   #f1f5f9;
+$tableRowHover:   #f8fafc;
+$tableBorder:      #e2e8f0;
+
+$accent:            #6366f1;
+
+$radius:            8px;
+$transition:        all 0.2s ease;
+
+
+
+.questionPanel {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  border-bottom: 1px solid $panelBorder;
+  background-color: $panelBg;
+
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: $textHeading;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $textMuted;
+    margin-bottom: 1.25rem;
+    line-height: 1.6;
+  }
+
+  h3 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $textMuted;
+    margin-bottom: 1rem;
+  }
+
+  h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: $accent;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    margin-bottom: 1.25rem;
+    border-radius: $radius;
+    overflow: hidden;
+    border: 1px solid $tableBorder;
+
+    thead {
+      background-color: $tableHeaderBg;
+
+      th {
+        padding: 8px 12px;
+        text-align: left;
+        font-weight: 600;
+        color: $textPrimary;
+        border-bottom: 1px solid $tableBorder;
+      }
+    }
+
+    tbody {
+      tr {
+        transition: $transition;
+        border-bottom: 1px solid $tableBorder;
+
+        
+      }
+
+      td {
+        padding: 8px 12px;
+        color: $textMuted;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    border-bottom: none;
+    border-right: 1px solid $panelBorder;
+  }
+}
