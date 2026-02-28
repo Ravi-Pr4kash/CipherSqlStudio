@@ -1,14 +1,16 @@
 ## Tech Stack
 
-Frontend -> React + Vite | Fast dev server, modern JSX, great DX 
-Styling -> SCSS | Variables, nesting, modular files |
-SQL Editor -> Monaco Editor | Same editor as VS Code, syntax highlighting 
-Backend -> Node.js + Express | Lightweight REST API |
-Database (store) -> MongoDB + Mongoose | Flexible schema for storing assignments 
-Database (execution) | PostgreSQL | Real SQL engine to run and grade user queries 
-pg library -> import pkg from "pg" | direct import { Pool } from "pg" won't work
-Pool over Client -> handles multiple connections at once | multiple users can run queries simultaneously without waiting
-client.release() -> returns the connection back to the pool | keeps the pool healthy
+| | Technology | |
+|---|---|---|
+| Frontend | React + Vite | Fast dev server, modern JSX, great DX |
+| Styling | SCSS | Variables, nesting, modular files |
+| SQL Editor | Monaco Editor | Same editor as VS Code, syntax highlighting |
+| Backend | Node.js + Express | Lightweight REST API |
+| Database (store) | MongoDB + Mongoose | Flexible schema for storing assignments |
+| Database (execution) | PostgreSQL | Real SQL engine to run and grade user queries |
+| pg library | import pkg from "pg" | direct import { Pool } from "pg" won't work with ES Modules |
+| Pool over Client | handles multiple connections at once | multiple users can run queries simultaneously without waiting |
+| client.release() | returns the connection back to the pool | keeps the pool healthy |
 
 
 ## Prerequisites
